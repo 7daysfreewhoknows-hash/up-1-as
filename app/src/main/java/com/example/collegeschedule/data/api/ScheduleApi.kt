@@ -7,10 +7,12 @@ import retrofit2.http.Query
 
 interface ScheduleApi {
 
-    @GET("api/schedule/group/{groupName}")
+    @GET("api/schedule/group/{groupName}") // Добавьте / в начало пути
     suspend fun getSchedule(
         @Path("groupName") groupName: String,
         @Query("start") start: String,
         @Query("end") end: String
     ): List<ScheduleByDateDto>
+    @GET("api/schedule/groups")
+    suspend fun getGroups(): List<String>
 }
